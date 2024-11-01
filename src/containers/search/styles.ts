@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { ReactComponent as Icon } from '../../assets/icon/search.svg'
-import { Fonts } from '../../styles'
+import { breakpoints, Fonts } from '../../styles'
 
 export const IconSearch = styled(Icon)`
   width: 25px;
@@ -70,14 +70,30 @@ export const ContainerSearch = styled.div`
 `
 
 export const HeaderSearch = styled.header`
-  position: absolute;
+  position: static;
   top: 0;
   left: 0;
+  z-index: 1;
   width: 100vw;
   display: flex;
   gap: 8px;
   justify-content: space-between;
-  padding: 8px 12px;
+  padding: 8px 24px;
+
+  div {
+    display: flex;
+    gap: 8px;
+    &:first-child {
+      flex: 1;
+    }
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #eee;
+  }
 
   form {
     flex: 1;
@@ -113,6 +129,7 @@ export const HeaderSearch = styled.header`
 
   .filter {
     display: flex;
+    align-items: center;
     gap: 8px;
 
     input {
@@ -129,5 +146,9 @@ export const HeaderSearch = styled.header`
         }
       }
     }
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    flex-direction: column;
   }
 `

@@ -4,6 +4,7 @@ type Results = {
   Movies: Movie[]
   totalPages: number
   page: number
+  active?: Movie
 }
 
 const initialState: Results = {
@@ -16,15 +17,6 @@ const ResultsSlice = createSlice({
   name: 'results',
   initialState,
   reducers: {
-    nextPage: (state) => {
-      state.page += 1
-    },
-    previousPage: (state) => {
-      state.page -= 1
-    },
-    chosenPage: (state, action: PayloadAction<number>) => {
-      state.page = action.payload
-    },
     setResults: (
       state,
       action: PayloadAction<{ movies: Movie[]; totalPages: number }>
@@ -32,10 +24,12 @@ const ResultsSlice = createSlice({
       state.Movies = action.payload.movies
       state.totalPages = action.payload.totalPages
       state.page = 1
+    },
+    setMovieActive: (state, action: PayloadAction<Movie>) => {
+      state.active = action.payload
     }
   }
 })
 
-export const { nextPage, previousPage, chosenPage, setResults } =
-  ResultsSlice.actions
+export const { setResults, setMovieActive } = ResultsSlice.actions
 export default ResultsSlice.reducer

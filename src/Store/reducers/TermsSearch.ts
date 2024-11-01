@@ -13,9 +13,12 @@ const TermSearchSlice = createSlice({
       state.search = action.payload.search
       state.page = action.payload.page
       state.year = action.payload.year
+    },
+    chosenPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload
     }
   }
 })
 
-export const { SetTermSearch } = TermSearchSlice.actions
+export const { SetTermSearch, chosenPage } = TermSearchSlice.actions
 export default TermSearchSlice.reducer

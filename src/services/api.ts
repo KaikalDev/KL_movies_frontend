@@ -7,7 +7,7 @@ const api = createApi({
   endpoints: (builder) => ({
     getMovies: builder.query<reponseApi, SearchParams>({
       query: ({ search, page = 1, year }) => {
-        let queryString = `api/?format=json&Title=${search}&page=${page}`
+        let queryString = `api/?format=json&Type=movie&Title=${search}&page=${page}`
         if (year) {
           queryString += `&year=${year}`
         }
